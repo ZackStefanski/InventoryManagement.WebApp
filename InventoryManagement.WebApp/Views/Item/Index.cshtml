@@ -1,0 +1,63 @@
+@model IEnumerable<ClassDemo.Models.Item>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.RetailPrice)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+             <th scope="col">
+                @Html.DisplayNameFor(model => model.UpdatedDate)
+            </th>
+            <th scope="col">
+                @Html.DisplayNameFor(model => model.Cost)
+            </th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RetailPrice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UpdatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                <a class="btn button-primary" style="color:gray" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn button-primary" style="color:gray" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn button-primary" style="color:red" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+
+}
+    </tbody>
+</table>
+    <p>
+    <a asp-action="Deleted">View Deleted Items</a>
+    </p>
