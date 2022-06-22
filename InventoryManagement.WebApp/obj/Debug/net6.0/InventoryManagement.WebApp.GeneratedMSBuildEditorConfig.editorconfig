@@ -6,8 +6,8 @@ build_property.ProjectTypeGuids =
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
-build_property.RootNamespace = ClassDemo
-build_property.RootNamespace = ClassDemo
+build_property.RootNamespace = InventoryManagement.WebApp
+build_property.RootNamespace = InventoryManagement.WebApp
 build_property.ProjectDir = C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
@@ -69,4 +69,4 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/zstefanski01/Projects/InventoryManagement.WebApp/InventoryManagement.WebApp/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = b-t76toxpr7s
+build_metadata.AdditionalFiles.CssScope = b-rvlmzkctw7

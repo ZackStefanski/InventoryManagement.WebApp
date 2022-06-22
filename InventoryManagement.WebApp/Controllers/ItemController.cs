@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ClassDemo.Models;
+using System.Text;
 
 namespace ClassDemo.Controllers
 {
@@ -240,6 +241,40 @@ namespace ClassDemo.Controllers
         private bool ItemExists(int id)
         {
           return (_context.Inventory?.Any(e => e.Id == id)).GetValueOrDefault();
+        }
+
+        [HttpPost]
+        public FileResult Export()
+        {
+            //Context i = new Context();
+            List<object> j = (from item in _context.Inventory.Where(s => s.IsDeleted == false).ToList()
+                              select new[] { item.Id.ToString(),
+                                                            item.Name.ToString(),
+                                                            item.RetailPrice.ToString(),
+                                                            item.CreatedDate.ToString(),
+                                                            item.UpdatedDate.ToString(),
+                                                            item.Cost.ToString(),
+                                }).ToList<object>();
+
+            //Insert the Column Names.
+            j.Insert(0, new string[6] { "ID","Item","RetailPrice","CreatedDate","UpdatedDate","Cost" });
+
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < j.Count; i++)
+            {
+                string[] item = (string[])j[i];
+                for (int x = 0; x < item.Length; x++)
+                {
+                    //Append data with separator.
+                    sb.Append(item[x] + ',');
+                }
+
+                //Append new line character.
+                sb.Append("\r\n");
+
+            }
+
+            return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", $"Inventory.{DateTime.Now}.csv");
         }
     }
 }

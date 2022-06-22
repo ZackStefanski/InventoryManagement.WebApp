@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "M/8v/YBZjLl6AOLC/tKGlOWkeIcHHwlAfL/S/mEVCq9ffcR6T6ESbnbruYU+IZtc146zzKlraNY+k3ItlbSQ5Q==",
+  "dgSpecHash": "Q2/h8WiSzQoDFX2LGGw93E3ZmoTy3k1/wOocU1oTgESaMExzyLuA3ow31Ie7vUbGmuoyE8xzn0FkCZltRL3osQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\zstefanski01\\Projects\\WebAppClassDemo\\ClassDemo\\ClassDemo.csproj",
+  "projectFilePath": "C:\\Users\\zstefanski01\\Projects\\InventoryManagement.WebApp\\InventoryManagement.WebApp\\InventoryManagement.WebApp.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zstefanski01\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\zstefanski01\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

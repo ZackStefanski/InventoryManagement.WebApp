@@ -9833,11 +9833,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zstefanski01\\Projects\\WebAppClassDemo\\ClassDemo\\ClassDemo.csproj",
-      "projectName": "ClassDemo",
-      "projectPath": "C:\\Users\\zstefanski01\\Projects\\WebAppClassDemo\\ClassDemo\\ClassDemo.csproj",
+      "projectUniqueName": "C:\\Users\\zstefanski01\\Projects\\InventoryManagement.WebApp\\InventoryManagement.WebApp\\InventoryManagement.WebApp.csproj",
+      "projectName": "InventoryManagement.WebApp",
+      "projectPath": "C:\\Users\\zstefanski01\\Projects\\InventoryManagement.WebApp\\InventoryManagement.WebApp\\InventoryManagement.WebApp.csproj",
       "packagesPath": "C:\\Users\\zstefanski01\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zstefanski01\\Projects\\WebAppClassDemo\\ClassDemo\\obj\\",
+      "outputPath": "C:\\Users\\zstefanski01\\Projects\\InventoryManagement.WebApp\\InventoryManagement.WebApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
