@@ -10,6 +10,12 @@ public class Context : DbContext
         options.UseSqlite(@"Data Source=test.db");
         
     }
+    //protected override void OnModelCreating(ModelBuilder modelBuilder)
+    //{
+    //    modelBuilder.Entity<Item>()
+    //        .Property(b => b.CreatedDate)
+    //        .ValueGeneratedOnAdd();
+    //}
 
     public DbSet<Item> Inventory { get; set; }
 }

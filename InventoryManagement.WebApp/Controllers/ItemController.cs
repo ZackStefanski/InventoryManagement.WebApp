@@ -168,7 +168,7 @@ namespace ClassDemo.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: Get item to REINSTATE
+        // GET: ITEM TO REINSTATE
         public async Task<IActionResult> Reinstate(int? id)
         {
             if (id == null || _context.Inventory == null)
@@ -186,8 +186,7 @@ namespace ClassDemo.Controllers
             return View(item);
         }
 
-        // WORKING ON THIS ONE //
-        // POST: Reinstate Item
+        // POST: REINSTATE ITEM
         [HttpPost, ActionName("Reinstate")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> ReinstateConfirmed(int id)
@@ -243,6 +242,7 @@ namespace ClassDemo.Controllers
           return (_context.Inventory?.Any(e => e.Id == id)).GetValueOrDefault();
         }
 
+        // EXPORT CSV FILE OF INVENTORY
         [HttpPost]
         public FileResult Export()
         {

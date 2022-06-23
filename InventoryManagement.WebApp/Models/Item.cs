@@ -17,7 +17,7 @@ namespace ClassDemo.Models
         public bool IsDeleted { get; set; } = false;
 
         [Display(Name = "CREATED DATE")]
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime? CreatedDate { get; set; } = DateTime.Now;
 
         [Display(Name = "UPDATED DATE")]
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
