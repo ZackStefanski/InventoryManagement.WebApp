@@ -1,13 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ClassDemo.Models;
+using InventoryManagement.WebApp.Models;
 
-public class Context : DbContext
+public class EmployeeContext : DbContext
 {
-    public Context() : base() { }
+    public EmployeeContext() : base() { }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         // connect to sqlite database
-        options.UseSqlite(@"Data Source=Inventory.db");
+        options.UseSqlite(@"Data Source=Employees.db");
         
     }
 
@@ -18,5 +19,5 @@ public class Context : DbContext
     //        .ValueGeneratedOnAdd();
     //}
 
-    public DbSet<Item> Inventory { get; set; }
+    public DbSet<Employee> Employees { get; set; }
 }
