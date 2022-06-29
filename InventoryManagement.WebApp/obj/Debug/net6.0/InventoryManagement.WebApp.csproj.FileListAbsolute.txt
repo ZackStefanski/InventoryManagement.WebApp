@@ -282,3 +282,10 @@ C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.We
 C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Debug\net6.0\ref\InventoryManagement.WebApp.dll
 C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Debug\net6.0\InventoryManagement.WebApp.pdb
 C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Debug\net6.0\InventoryManagement.WebApp.genruntimeconfig.cache
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\bin\Debug\net6.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\bin\Debug\net6.0\Microsoft.Extensions.FileProviders.Embedded.dll
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\bin\Debug\net6.0\Microsoft.Extensions.Identity.Core.dll
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\bin\Debug\net6.0\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Debug\net6.0\InventoryManagement.WebApp.MvcApplicationPartsAssemblyInfo.cs

@@ -12,17 +12,20 @@ namespace ClassDemo.Models
 
 
         [Display(Name = "RETAIL PRICE")]
-        public decimal RetailPrice { get; set; }
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        public decimal RetailPrice { get;  set; }
 
         public bool IsDeleted { get; set; } = false;
 
         [Display(Name = "CREATED DATE")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:d}")]
         public DateTime? CreatedDate { get; set; } = DateTime.Now;
 
         [Display(Name = "UPDATED DATE")]
         public DateTime UpdatedDate { get; set; } = DateTime.Now;
 
         [Display(Name = "COST")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public decimal Cost { get; set; } = 0;
 
     }

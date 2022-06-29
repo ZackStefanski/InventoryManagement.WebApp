@@ -22,7 +22,40 @@ namespace ClassDemo.Controllers
         // GET: Inventory List
         public async Task<IActionResult> Index()
         {
-            _context.Database.EnsureCreated(); 
+            string path = Environment.CurrentDirectory.ToString() + "/Inventory.db";
+
+            bool fileExist = System.IO.File.Exists(path);
+
+            if (!fileExist)
+            {
+                _context.Database.EnsureCreated();
+                var items = new Item[]
+{
+                new Item{ Name = "Microphone",RetailPrice = 99.99m,Cost = 68.25m},
+                new Item{ Name = "Guitar",RetailPrice = 999.99m,Cost = 450m},
+                new Item{ Name = "Cable",RetailPrice = 18.99m,Cost = 7.89m},
+                new Item{ Name = "Microphone Stand",RetailPrice = 25.99m,Cost = 13.24m},
+                new Item{ Name = "Microphone Clip",RetailPrice = 5.25m,Cost = 2.50m},
+                new Item{ Name = "Guitar Stand",RetailPrice = 19.99m,Cost = 10.24m},
+                new Item{ Name = "Guitar Amp",RetailPrice = 1299.99m,Cost = 650.25m}
+};
+                foreach (Item item in items)
+                {
+                    _context.Add(item);
+                }
+                _context.SaveChanges();
+            }
+
+            //_context.Database.EnsureCreated();
+
+            return _context.Inventory != null ?
+                    View(await _context.Inventory.Where(s => s.IsDeleted == false).ToListAsync()) :
+                    Problem("Entity set 'Context.Inventory'  is null.");
+        }
+
+        // GET: Inventory List for Employee
+        public async Task<IActionResult> Quote()
+        {
 
             return _context.Inventory != null ?
                     View(await _context.Inventory.Where(s => s.IsDeleted == false).ToListAsync()) :
@@ -32,7 +65,7 @@ namespace ClassDemo.Controllers
         // GET: Deleted Items List
         public async Task<IActionResult> Deleted()
         {
-            _context.Database.EnsureCreated();
+            //_context.Database.EnsureCreated();
 
             return _context.Inventory != null ?
                     View(await _context.Inventory.Where(s => s.IsDeleted == true).ToListAsync()) :
