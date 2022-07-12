@@ -9,6 +9,14 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+<p>
+    @using(Html.BeginForm("Index", "Item", FormMethod.Get))
+    {
+    <b>Search</b>
+    <br />
+    @Html.TextBox("search") <input type ="submit" value="search" />
+    }
+</p>
 <table class="table">
     <thead>
         <tr>
@@ -31,7 +39,15 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @if (Model.Count() == 0)
+        {
+            <tr>
+                <td colspan="5">
+                    No items match the search.
+                </td>
+            </tr>
+        } else {
+        foreach (var item in Model) {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
@@ -54,8 +70,8 @@
                 <a class="btn button-primary" style="color:red" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
-
-}
+        }
+        }
     </tbody>
 </table>
     <p>

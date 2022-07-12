@@ -10,7 +10,12 @@
       "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
       "DisplayName": "Miscellaneous Files",
       "ColorIndex": -1
+    },
+    "a3689b24-12e0-41f2-8f86-7a736c998f8e": {
+      "ProjectGuid": "a3689b24-12e0-41f2-8f86-7a736c998f8e",
+      "DisplayName": "InventoryTests",
+      "ColorIndex": 1
     }
   },
-  "NextColorIndex": 1
+  "NextColorIndex": 2
 }

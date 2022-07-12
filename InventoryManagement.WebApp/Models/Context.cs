@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ClassDemo.Models;
+//using InventoryManagement.WebApp.Models;
 
 public class Context : DbContext
 {
@@ -11,12 +12,8 @@ public class Context : DbContext
         
     }
 
-    //protected override void OnModelCreating(ModelBuilder modelBuilder)
-    //{
-    //    modelBuilder.Entity<Item>()
-    //        .Property(b => b.CreatedDate)
-    //        .ValueGeneratedOnAdd();
-    //}
-
     public DbSet<Item> Inventory { get; set; }
+
+    //public DbSet<Item> Quote { get; set; }
+
 }

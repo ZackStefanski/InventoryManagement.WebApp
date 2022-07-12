@@ -14,13 +14,15 @@ namespace ClassDemo.Controllers
     {
         private readonly Context _context;
 
+        public List<Item> Quote { get; set; } = new List<Item>();
+
         public ItemController(Context context)
         {
             _context = context;
         }
 
         // GET: Inventory List
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string search)
         {
             string path = Environment.CurrentDirectory.ToString() + "/Inventory.db";
 
@@ -46,27 +48,20 @@ namespace ClassDemo.Controllers
                 _context.SaveChanges();
             }
 
-            //_context.Database.EnsureCreated();
+            if (search != "")
+            {
+                return View(_context.Inventory.Where(x => x.Name.StartsWith(search) || search == null).ToList());
+            }
 
             return _context.Inventory != null ?
                     View(await _context.Inventory.Where(s => s.IsDeleted == false).ToListAsync()) :
                     Problem("Entity set 'Context.Inventory'  is null.");
         }
 
-        // GET: Inventory List for Employee
-        public async Task<IActionResult> Quote()
-        {
-
-            return _context.Inventory != null ?
-                    View(await _context.Inventory.Where(s => s.IsDeleted == false).ToListAsync()) :
-                    Problem("Entity set 'Context.Inventory'  is null.");
-        }
 
         // GET: Deleted Items List
         public async Task<IActionResult> Deleted()
         {
-            //_context.Database.EnsureCreated();
-
             return _context.Inventory != null ?
                     View(await _context.Inventory.Where(s => s.IsDeleted == true).ToListAsync()) :
                     Problem("Entity set 'Context.Inventory'  is null.");
@@ -96,15 +91,26 @@ namespace ClassDemo.Controllers
             return View();
         }
 
-        // POST: Item/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: CREATE ITEM
+        //Here I am checking to ensure that item.name s that have not been deleted or currently exist in the _context are not repeated. 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,RetailPrice,IsDeleted,CreatedDate,UpdatedDate,Cost")] Item item)
         {
             if (ModelState.IsValid)
             {
+                foreach (Item x in _context.Inventory)
+                {
+                    if (item.Name == x.Name && x.IsDeleted == true)
+                    {
+                        ModelState.AddModelError("", "This item exists! Please reinstate from the Deleted list.");
+                        return View(x);
+                    } else if (item.Name == x.Name && x.IsDeleted == false)
+                    {
+                        ModelState.AddModelError("", "This item already exists.");
+                        return View(x);
+                    }
+                }
                 _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -193,7 +199,6 @@ namespace ClassDemo.Controllers
             var item = await _context.Inventory.FindAsync(id);
             if (item != null)
             {
-                //_context.Inventory.Remove(item);
                 item.IsDeleted = !item.IsDeleted;
             }
 
@@ -238,38 +243,6 @@ namespace ClassDemo.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public async Task<IActionResult> Delete(int id, [Bind("Id,Name,Cost")] Item item)
-        //{
-        //    if (id != item.Id)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        try
-        //        {
-        //            item.IsDeleted = true;
-        //            await _context.SaveChangesAsync();
-        //        }
-        //        catch (DbUpdateConcurrencyException)
-        //        {
-        //            if (!ItemExists(item.Id))
-        //            {
-        //                return NotFound();
-        //            }
-        //            else
-        //            {
-        //                throw;
-        //            }
-        //        }
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    return View(item);
-        //}
-
         private bool ItemExists(int id)
         {
           return (_context.Inventory?.Any(e => e.Id == id)).GetValueOrDefault();
@@ -308,6 +281,57 @@ namespace ClassDemo.Controllers
             }
 
             return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", $"Inventory.{DateTime.Now}.csv");
+        }
+
+        // Get Item for Quote List
+        public async Task<IActionResult> Add(int? id)
+        {
+            if (id == null || _context.Inventory == null)
+            {
+                return NotFound();
+            }
+
+            var item = await _context.Inventory
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            return View(item);
+        }
+
+        [ActionName("Add")]
+        public async Task<IActionResult> AddConfirmed(int? id)
+        {
+            if (_context.Inventory == null)
+            {
+                return Problem("Entity set 'Context.Inventory'  is null.");
+            }
+            var item = await _context.Inventory.FindAsync(id);
+            if (item != null)
+            {
+                Quote.Add(item);
+            }
+            return RedirectToAction(nameof(Index));
+        }
+
+        public string ShowQuote()
+        {
+            List<string> list = new List<string>();
+            foreach (Item a in Quote)
+            {
+                list.Add($"{a.Name}| {a.Cost}");
+            }
+
+            if (list.Count > 0)
+            {
+                return list.ToString();
+            }
+            else
+            {
+                throw new Exception("Add something this list!");
+            }
         }
     }
 }
