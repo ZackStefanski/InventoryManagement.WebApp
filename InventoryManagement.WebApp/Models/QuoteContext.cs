@@ -2,15 +2,14 @@
 using ClassDemo.Models;
 //using InventoryManagement.WebApp.Models;
 
-public class Context : DbContext
+public class QuoteContext : DbContext
 {
-    public Context() : base() { }
+    public QuoteContext() : base() { }
     protected override void OnConfiguring(DbContextOptionsBuilder options)
     {
         // connect to sqlite database
-        options.UseSqlite(@"Data Source=Inventory.db");
+        options.UseSqlite(@"Data Source=Quote.db");
     }
-
-    public DbSet<Item> Inventory { get; set; }
+    public DbSet<Item> Quote { get; set; }
 
 }

@@ -15,7 +15,7 @@ namespace InventoryTests
         //public void ItemIsDeleted()
         //{
         //    //Arrange - What variables will we need?
-        //    var mockItemController = new 
+        //    private readonly Context _context;
         //    ItemController controller = new ItemController();
 
         //    //Act - What do we want our variables to do?

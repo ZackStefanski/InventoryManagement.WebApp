@@ -28,29 +28,33 @@ namespace ClassDemo.Controllers
 
             bool fileExist = System.IO.File.Exists(path);
 
+            if (search != null)
+            {
+                string searchUpper = search.ToUpper();
+                if (searchUpper != "")
+                {
+                    return View(_context.Inventory.Where(x => x.Name.Contains(searchUpper) || searchUpper == null).ToList());
+                }
+            }
+
             if (!fileExist)
             {
                 _context.Database.EnsureCreated();
                 var items = new Item[]
 {
-                new Item{ Name = "Microphone",RetailPrice = 99.99m,Cost = 68.25m},
-                new Item{ Name = "Guitar",RetailPrice = 999.99m,Cost = 450m},
-                new Item{ Name = "Cable",RetailPrice = 18.99m,Cost = 7.89m},
-                new Item{ Name = "Microphone Stand",RetailPrice = 25.99m,Cost = 13.24m},
-                new Item{ Name = "Microphone Clip",RetailPrice = 5.25m,Cost = 2.50m},
-                new Item{ Name = "Guitar Stand",RetailPrice = 19.99m,Cost = 10.24m},
-                new Item{ Name = "Guitar Amp",RetailPrice = 1299.99m,Cost = 650.25m}
+                new Item{ Name = "MICROPHONE",RetailPrice = 99.99m,Cost = 68.25m},
+                new Item{ Name = "GUITAR",RetailPrice = 999.99m,Cost = 450m},
+                new Item{ Name = "CABLE",RetailPrice = 18.99m,Cost = 7.89m},
+                new Item{ Name = "MICROPHONE STAND",RetailPrice = 25.99m,Cost = 13.24m},
+                new Item{ Name = "MICROPHONE CLIP",RetailPrice = 5.25m,Cost = 2.50m},
+                new Item{ Name = "GUITAR STAND",RetailPrice = 19.99m,Cost = 10.24m},
+                new Item{ Name = "GUITAR AMP",RetailPrice = 1299.99m,Cost = 650.25m}
 };
                 foreach (Item item in items)
                 {
                     _context.Add(item);
                 }
                 _context.SaveChanges();
-            }
-
-            if (search != "")
-            {
-                return View(_context.Inventory.Where(x => x.Name.StartsWith(search) || search == null).ToList());
             }
 
             return _context.Inventory != null ?
@@ -111,6 +115,7 @@ namespace ClassDemo.Controllers
                         return View(x);
                     }
                 }
+                item.Name = item.Name.ToUpper();
                 _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -118,7 +123,7 @@ namespace ClassDemo.Controllers
             return View(item);
         }
 
-        // GET: Item/Edit/5
+        // GET: Item to Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Inventory == null)
@@ -284,54 +289,55 @@ namespace ClassDemo.Controllers
         }
 
         // Get Item for Quote List
-        public async Task<IActionResult> Add(int? id)
-        {
-            if (id == null || _context.Inventory == null)
-            {
-                return NotFound();
-            }
+        //public async Task<IActionResult> Add(int? id)
+        //{
+        //    if (id == null || _context.Inventory == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            var item = await _context.Inventory
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (item == null)
-            {
-                return NotFound();
-            }
+        //    var item = await _context.Inventory
+        //        .FirstOrDefaultAsync(m => m.Id == id);
+        //    if (item == null)
+        //    {
+        //        return NotFound();
+        //    }
 
-            return View(item);
-        }
+        //    return View(item);
+        //}
 
-        [ActionName("Add")]
-        public async Task<IActionResult> AddConfirmed(int? id)
-        {
-            if (_context.Inventory == null)
-            {
-                return Problem("Entity set 'Context.Inventory'  is null.");
-            }
-            var item = await _context.Inventory.FindAsync(id);
-            if (item != null)
-            {
-                Quote.Add(item);
-            }
-            return RedirectToAction(nameof(Index));
-        }
+        //[ActionName("Add")]
+        //public async Task<IActionResult> AddConfirmed(int? id)
+        //{
+        //    if (_context.Inventory == null)
+        //    {
+        //        return Problem("Entity set 'Context.Inventory'  is null.");
+        //    }
+        //    var item = await _context.Inventory.FindAsync(id);
+        //    if (item != null)
+        //    {
+        //        Quote.Add(item);
+        //    }
+        //    return RedirectToAction(nameof(Index));
+        //}
 
-        public string ShowQuote()
-        {
-            List<string> list = new List<string>();
-            foreach (Item a in Quote)
-            {
-                list.Add($"{a.Name}| {a.Cost}");
-            }
 
-            if (list.Count > 0)
-            {
-                return list.ToString();
-            }
-            else
-            {
-                throw new Exception("Add something this list!");
-            }
-        }
+        //public string ShowQuote()
+        //{
+        //    List<string> list = new List<string>();
+        //    foreach (Item a in Quote)
+        //    {
+        //        list.Add($"{a.Name}| {a.Cost}");
+        //    }
+
+        //    if (list.Count > 0)
+        //    {
+        //        return list.ToString();
+        //    }
+        //    else
+        //    {
+        //        throw new Exception("Add something this list!");
+        //    }
+        //}
     }
 }
