@@ -51,6 +51,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSXRlbVxSZWluc3RhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/zstefanski01/Projects/InventoryManagement.WebApp/InventoryManagement.WebApp/Views/Quote/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zstefanski01/Projects/InventoryManagement.WebApp/InventoryManagement.WebApp/Views/Quote/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zstefanski01/Projects/InventoryManagement.WebApp/InventoryManagement.WebApp/Views/Quote/Details.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcRGV0YWlscy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zstefanski01/Projects/InventoryManagement.WebApp/InventoryManagement.WebApp/Views/Quote/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/zstefanski01/Projects/InventoryManagement.WebApp/InventoryManagement.WebApp/Views/Quote/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUXVvdGVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/zstefanski01/Projects/InventoryManagement.WebApp/InventoryManagement.WebApp/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
