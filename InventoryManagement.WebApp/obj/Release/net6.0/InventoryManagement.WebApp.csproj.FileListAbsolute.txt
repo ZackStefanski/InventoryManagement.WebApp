@@ -1,0 +1,9 @@
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.csproj.AssemblyReference.cache
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.AssemblyInfoInputs.cache
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.AssemblyInfo.cs
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.csproj.CoreCompileInputs.cache
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.RazorAssemblyInfo.cache
+C:\Users\zstefanski01\Projects\InventoryManagement.WebApp\InventoryManagement.WebApp\obj\Release\net6.0\InventoryManagement.WebApp.RazorAssemblyInfo.cs

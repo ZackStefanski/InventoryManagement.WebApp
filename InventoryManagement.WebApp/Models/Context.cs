@@ -1,7 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using ClassDemo.Models;
 using InventoryManagement.WebApp.Models;
-//using InventoryManagement.WebApp.Models;
 
 public class Context : DbContext
 {
@@ -20,5 +19,6 @@ public class Context : DbContext
 
     public DbSet<Item> Inventory { get; set; }
     public DbSet<Quote> Quotes { get; set; }
+    public DbSet<Employee> Employees { get; set; }
 
 }

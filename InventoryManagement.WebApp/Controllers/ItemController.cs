@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using ClassDemo.Models;
 using System.Text;
+using InventoryManagement.WebApp.Models;
 
 namespace ClassDemo.Controllers
 {
@@ -40,6 +41,10 @@ namespace ClassDemo.Controllers
             if (!fileExist)
             {
                 _context.Database.EnsureCreated();
+            }
+
+            if (_context.Inventory.Count() == 0)
+            {
                 var items = new Item[]
 {
                 new Item{ Name = "MICROPHONE",RetailPrice = 99.99m,Cost = 68.25m},
@@ -52,7 +57,8 @@ namespace ClassDemo.Controllers
 };
                 foreach (Item item in items)
                 {
-                    _context.Add(item);
+                    // changed from _context.Add(item);
+                    _context.Inventory.Add(item);
                 }
                 _context.SaveChanges();
             }
@@ -288,56 +294,30 @@ namespace ClassDemo.Controllers
             return File(Encoding.UTF8.GetBytes(sb.ToString()), "text/csv", $"Inventory.{DateTime.Now}.csv");
         }
 
-        // Get Item for Quote List
-        //public async Task<IActionResult> Add(int? id)
-        //{
-        //    if (id == null || _context.Inventory == null)
-        //    {
-        //        return NotFound();
-        //    }
+        public void AddItemToQuoteLogic(Item x)
+        {
+            var item = _context.Inventory.Find(x.Id);
+            x.QuoteItems.Add(new QuoteItem { QuoteId = 1, ItemId = x.Id });
+            _context.SaveChanges();
+        }
 
-        //    var item = await _context.Inventory
-        //        .FirstOrDefaultAsync(m => m.Id == id);
-        //    if (item == null)
-        //    {
-        //        return NotFound();
-        //    }
+        // POST: REINSTATE ITEM
+        [HttpPost, ActionName("AddItemToQuote")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AddItemToQuote(int id)
+        {
+            if (_context.Inventory == null)
+            {
+                return Problem("Entity set 'Context.Inventory'  is null.");
+            }
+            var item = await _context.Inventory.FindAsync(id);
+            if (item != null)
+            {
+                AddItemToQuoteLogic(item);
+            }
 
-        //    return View(item);
-        //}
-
-        //[ActionName("Add")]
-        //public async Task<IActionResult> AddConfirmed(int? id)
-        //{
-        //    if (_context.Inventory == null)
-        //    {
-        //        return Problem("Entity set 'Context.Inventory'  is null.");
-        //    }
-        //    var item = await _context.Inventory.FindAsync(id);
-        //    if (item != null)
-        //    {
-        //        Quote.Add(item);
-        //    }
-        //    return RedirectToAction(nameof(Index));
-        //}
-
-
-        //public string ShowQuote()
-        //{
-        //    List<string> list = new List<string>();
-        //    foreach (Item a in Quote)
-        //    {
-        //        list.Add($"{a.Name}| {a.Cost}");
-        //    }
-
-        //    if (list.Count > 0)
-        //    {
-        //        return list.ToString();
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("Add something this list!");
-        //    }
-        //}
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

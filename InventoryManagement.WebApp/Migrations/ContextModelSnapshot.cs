@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ClassDemo.Migrations
+namespace InventoryManagement.WebApp.Migrations
 {
     [DbContext(typeof(Context))]
     partial class ContextModelSnapshot : ModelSnapshot
@@ -51,6 +51,21 @@ namespace ClassDemo.Migrations
                     b.ToTable("Inventory");
                 });
 
+            modelBuilder.Entity("InventoryManagement.WebApp.Models.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Employees");
+                });
+
             modelBuilder.Entity("InventoryManagement.WebApp.Models.Quote", b =>
                 {
                     b.Property<int>("Id")
@@ -64,6 +79,8 @@ namespace ClassDemo.Migrations
                         .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("Quotes");
                 });
@@ -90,6 +107,15 @@ namespace ClassDemo.Migrations
                         .HasForeignKey("QuoteId");
                 });
 
+            modelBuilder.Entity("InventoryManagement.WebApp.Models.Quote", b =>
+                {
+                    b.HasOne("InventoryManagement.WebApp.Models.Employee", null)
+                        .WithMany("Quotes")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("InventoryManagement.WebApp.Models.QuoteItem", b =>
                 {
                     b.HasOne("ClassDemo.Models.Item", "Item")
@@ -112,6 +138,11 @@ namespace ClassDemo.Migrations
             modelBuilder.Entity("ClassDemo.Models.Item", b =>
                 {
                     b.Navigation("QuoteItems");
+                });
+
+            modelBuilder.Entity("InventoryManagement.WebApp.Models.Employee", b =>
+                {
+                    b.Navigation("Quotes");
                 });
 
             modelBuilder.Entity("InventoryManagement.WebApp.Models.Quote", b =>
