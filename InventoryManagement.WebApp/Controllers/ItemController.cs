@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ClassDemo.Models;
 using System.Text;
 using InventoryManagement.WebApp.Models;
+using InventoryManagement.WebApp.Logic;
 
 namespace ClassDemo.Controllers
 {
@@ -301,23 +302,62 @@ namespace ClassDemo.Controllers
             _context.SaveChanges();
         }
 
-        // POST: REINSTATE ITEM
-        [HttpPost, ActionName("AddItemToQuote")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddItemToQuote(int id)
-        {
-            if (_context.Inventory == null)
-            {
-                return Problem("Entity set 'Context.Inventory'  is null.");
-            }
-            var item = await _context.Inventory.FindAsync(id);
-            if (item != null)
-            {
-                AddItemToQuoteLogic(item);
-            }
+        //// POST: ADD ITEM TO QUOTE
+        //[HttpPost, ActionName("AddItemToQuote")]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> AddItemToQuote(int id)
+        //{
+        //    if (_context.Inventory == null)
+        //    {
+        //        return Problem("Entity set 'Context.Inventory'  is null.");
+        //    }
+        //    var item = await _context.Inventory.FindAsync(id);
+        //    if (item != null)
+        //    {
+        //        AddItemToQuoteLogic(item);
+        //    }
 
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+        //    await _context.SaveChangesAsync();
+        //    return RedirectToAction(nameof(Index));
+        //}
+
+        // QUOTE LOGIC 
+        public Item findItemForQuote(int id)
+        {
+
+            /*
+            Outputs: item
+            Inputs: id
+            Constraints:
+            Edge Cases:
+            ------------
+            ++ PSEUDOCODE ++
+            get item id
+            find item id in _context
+            retrieve item info
+            */
+
+            Item? quoteItem = _context.Inventory.Find(_context.Inventory, id);
+
+            return quoteItem == null ? throw new Exception("item is null") : quoteItem;
         }
+        public void addItemToQuote(Item x)
+        {
+            Quote.Add(x);
+        }
+        public void removeItemFromQuote(Item x)
+        {
+            Quote.Remove(x);
+        }
+
+        public string displayQuoteAsList()
+        {
+            if (Quote.Count == 0 || Quote.Count == null)
+            {
+                return "no items here!";
+            }
+            return Quote.ToString();
+        }
+
     }
 }
