@@ -108,6 +108,8 @@ namespace ClassDemo.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,Name,RetailPrice,IsDeleted,CreatedDate,UpdatedDate,Cost")] Item item)
         {
+            item.Name = item.Name.ToUpper();
+
             if (ModelState.IsValid)
             {
                 foreach (Item x in _context.Inventory)
@@ -122,7 +124,6 @@ namespace ClassDemo.Controllers
                         return View(x);
                     }
                 }
-                item.Name = item.Name.ToUpper();
                 _context.Add(item);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

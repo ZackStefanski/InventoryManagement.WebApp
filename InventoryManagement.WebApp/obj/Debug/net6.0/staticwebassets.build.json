@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hERr76tZ15hRX6aSmUKrn6bDSs+7AR2Qi23rvBI+7P4=",
+  "Hash": "MxqrQ3/7FMGSPCHbeahGICiNGpjO0sHD5xQAG34AzYQ=",
   "Source": "InventoryManagement.WebApp",
   "BasePath": "_content/InventoryManagement.WebApp",
   "Mode": "Default",
@@ -1103,6 +1103,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\zstefanski01\\Projects\\InventoryManagement.WebApp\\InventoryManagement.WebApp\\wwwroot\\images\\LOGO.png",
+      "SourceId": "InventoryManagement.WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\zstefanski01\\Projects\\InventoryManagement.WebApp\\InventoryManagement.WebApp\\wwwroot\\",
+      "BasePath": "_content/InventoryManagement.WebApp",
+      "RelativePath": "images/LOGO.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\LOGO.png"
     },
     {
       "Identity": "C:\\Users\\zstefanski01\\Projects\\InventoryManagement.WebApp\\InventoryManagement.WebApp\\wwwroot\\js\\site.js",
